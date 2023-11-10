@@ -441,7 +441,7 @@ type dockerComposeOptions struct {
 }
 
 func (p *Project) runDockerComposeCmd(opts dockerComposeOptions) error {
-	cmd := exec.Command("docker-compose", opts.args...)
+	cmd := exec.Command("docker", append([]string{"compose"}, opts.args...)...)
 	cmd.Env = append(os.Environ(), opts.env...)
 
 	if logger.IsDebugMode() {
